@@ -1,7 +1,5 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-import json
 from django.contrib.auth import logout as log_out
 from django.conf import settings
 from django.http import HttpResponseRedirect
@@ -19,17 +17,7 @@ def index(request):
 @login_required
 def dashboard(request):
     user = request.user
-    auth0user = user.social_auth.get(provider='auth0')
-    userdata = {
-        'user_id': auth0user.uid,
-        'name': user.first_name,
-        'email': user.email,
-    }
-
-    return render(request, 'dashboard.html', {
-        'auth0User': auth0user,
-        'userdata': json.dumps(userdata, indent=4)
-    })
+    return render(request, 'dashboard.html', {})
 
 
 def logout(request):
