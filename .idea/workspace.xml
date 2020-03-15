@@ -1,4 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d14684ab-afcb-45a6-a65e-dac6bf2d8681" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/launch.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-item-management-system.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project-item-management-system.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/activate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/activate.csh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/activate.fish" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/activate_this.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/activate_this.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/chardetect" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/chardetect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/django-admin" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/django-admin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/django-admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/django-admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/easy_install" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/easy_install" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/easy_install-3.6" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/easy_install-3.6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pip3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pip3.6" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pip3.6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyjwt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyjwt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyrsa-decrypt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyrsa-decrypt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyrsa-encrypt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyrsa-encrypt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyrsa-keygen" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyrsa-keygen" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyrsa-priv2pub" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyrsa-priv2pub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyrsa-sign" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyrsa-sign" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/pyrsa-verify" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/pyrsa-verify" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/python" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/python" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/python-config" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/python-config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/python3" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/python3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/python3.6" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/python3.6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/sqlformat" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/sqlformat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/bin/wheel" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/bin/wheel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/include/python3.6m" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/include/python3.6m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/CacheControl-0.11.7-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/CacheControl-0.11.7-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/appdirs-1.4.3-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/appdirs-1.4.3-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/certifi-2018.1.18-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/certifi-2018.1.18-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/chardet-3.0.4-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/chardet-3.0.4-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/colorama-0.3.7-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/colorama-0.3.7-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/distlib-0.2.6-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/distlib-0.2.6-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/distro-1.0.1-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/distro-1.0.1-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/html5lib-0.999999999-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/html5lib-0.999999999-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/idna-2.6-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/idna-2.6-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/ipaddress-0.0.0-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/ipaddress-0.0.0-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/lockfile-0.12.2-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/lockfile-0.12.2-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/packaging-17.1-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/packaging-17.1-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/pip-9.0.1-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/pip-9.0.1-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/pkg_resources-0.0.0-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/pkg_resources-0.0.0-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/progress-1.2-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/progress-1.2-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/pyparsing-2.2.0-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/pyparsing-2.2.0-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/requests-2.18.4-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/requests-2.18.4-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/retrying-1.3.3-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/retrying-1.3.3-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/setuptools-39.0.1-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/setuptools-39.0.1-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/six-1.11.0-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/six-1.11.0-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/urllib3-1.22-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/urllib3-1.22-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/webencodings-0.5-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/webencodings-0.5-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/is2_env/share/python-wheels/wheel-0.30.0-py2.py3-none-any.whl" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/is2_env/share/python-wheels/wheel-0.30.0-py2.py3-none-any.whl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/launch.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrips/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1Z8vxHZvKoGkiwNAx3dPSvofhYZ" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="408" y="283" width="546" height="168" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1584302864657">
+      <screen x="0" y="0" width="1366" height="735" />
+    </state>
+    <state x="408" y="283" width="546" height="168" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.735@0.0.1366.735" timestamp="1584302864656" />
+  </component>
 </project>
