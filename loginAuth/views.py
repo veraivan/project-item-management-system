@@ -8,7 +8,7 @@ from urllib.parse import urlencode
 
 def index(request):
     user = request.user
-    if user.is_authenticated:
+    if user.is_authenticated and not user.is_superuser:
         return redirect(dashboard)
     else:
         return render(request, 'index.html')
