@@ -1,9 +1,14 @@
-# Scripts_is2
 
-Aqui se almacenaran los scripts
+# Sistema de administración de ítems de proyecto
 
-1- launch.sh
- "Sirve para configurar los entornos de desarrollo y Producción del Sistema de Gestión de Items de Proyectos.
-   - Para el proyecto en producción descarga un tag y configura en un servidor apache.
-   - Para el proyecto en desarrollo descarga de una rama y pone en condiciones para que se pueda editar con pycharm. 
-"
+El sistema deberá permitir la gestión de los requerimientos y la completa trazabilidad de los mismos
+con los diversos componentes generados en las fases de un proyecto. 
+
+## Despliegue de la aplicacion en su maquina local 
+Una vez clonado el repositorio del proyecto, abra su terminal y vaya al directorio scripts y ejecute lo siguiente: 
+```bash
+sudo launch.sh
+```
+
+Nota:
+ Sirve para configurar los entornos de desarrollo del sistema. 
