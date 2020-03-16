@@ -1,3 +1,6 @@
+"""
+ESTE ARCHIVO DE URL TIENE LOS LOS PARAMENTROS PARA LOS ARCHIVOS DE STATIC PARA HACER DEPLOYMENT DEL PROYECTO
+"""
 from django.contrib import admin
 from django.urls import path, include
 

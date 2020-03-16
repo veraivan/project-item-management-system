@@ -1,4 +1,7 @@
 #!/bin/bash
+#"""
+#ESTE SCRIPT INICIA EL VIRTUAL ENVIROMENT Y CONFIGURA LA BASE DE DATOS EN SU DIRECTORIO TAMBIEN SE ENCUENTRA EL REQUIREMENTS.TXT
+#"""
 sudo echo "Bienvenido"
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python3-dev

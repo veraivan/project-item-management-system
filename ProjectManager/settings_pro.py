@@ -1,3 +1,6 @@
+"""
+ESTE ARCHIVO DE CONFIGURACION TIENE LOS PARAMENTROS NECESARIOS PARA HACER DEPLOYMENT DEL PROYECTO
+"""
 import os
 import dj_database_url
 from decouple import config
