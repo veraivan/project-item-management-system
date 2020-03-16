@@ -7,6 +7,13 @@ from urllib.parse import urlencode
 
 
 def index(request):
+    """
+        Funcion de index
+    Function    :   Index
+    Type        :   Request
+    Owner       :   Ivan
+
+    """
     user = request.user
     if user.is_authenticated and not user.is_superuser:
         return redirect(dashboard)
@@ -16,11 +23,20 @@ def index(request):
 
 @login_required
 def dashboard(request):
+    """
+        Funcion dashboard
+    Function    :   dashboard
+    Type        :   Administracion
+    Owner       ;   Ivan
+    """
     user = request.user
     return render(request, 'dashboard.html', {})
 
 
 def logout(request):
+    """
+    Utilizado para deslogearse
+    """
     log_out(request)
     return_to = urlencode({'returnTo': request.build_absolute_uri('/')})
     logout_url = 'https://%s/v2/logout?client_id=%s&%s' % \
