@@ -3,6 +3,9 @@ sudo echo "Bienvenido"
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python3-dev
 sudo apt-get install -y postgresql postgresql-contrib
+sudo apt-get install postgresql
+sudo apt-get install python-psycopg2
+sudo apt-get install libpq-dev
 echo "INSTALACION"
 sudo apt-get install -y virtualenv
 echo "CREACION"
