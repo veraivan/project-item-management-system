@@ -1,20 +1,28 @@
 #!/bin/bash
-#"""
-#ESTE SCRIPT INICIA EL VIRTUAL ENVIROMENT Y CONFIGURA LA BASE DE DATOS EN SU DIRECTORIO TAMBIEN SE ENCUENTRA EL REQUIREMENTS.TXT
-#"""
-sudo echo "Bienvenido"
-sudo apt-get install -y python3-pip
-sudo apt-get install -y python3-dev
-sudo apt-get install -y postgresql postgresql-contrib
+sudo echo "Hola"
+git clone https://github.com/veraivan/project-item-management-system.git
+sudo apt-get install python3-pip
+sudo apt-get install python3-dev
+sudo apt-get install postgresql postgresql-contrib
+#sudo apt-get install postgresql
+#sudo apt-get install python-psycopg2
+#sudo apt-get install libpq-dev
 echo "INSTALACION"
-sudo apt-get install -y virtualenv
-echo "CREACION"
+sudo apt-get install virtualenv
+echo "CREACIONN"
 virtualenv -p /usr/bin/python3.6 is2_env
 
 echo "\n\n\nACTIVACION\n\n\n"
+#ln -s is2_env/bin/activate
 source ./is2_env/bin/activate
 pip list
 pip install -r requirements.txt
+pip list
 cd project-item-management-system
-sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD '12345';"
+git checkout desarrolloPruebaGiuli
+sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+#psql -c '\x' -c "ALTER USER postgres WITH PASSWORD '12345';"
 
+
+#deactivate
+#rm -rf is2_env/
