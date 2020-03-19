@@ -1,12 +1,14 @@
 #!/bin/bash
 sudo echo "Hola"
 git clone https://github.com/veraivan/project-item-management-system.git
+sudo apt-get install python-django
 sudo apt-get install python3-pip
 sudo apt-get install python3-dev
 sudo apt-get install postgresql postgresql-contrib
-#sudo apt-get install postgresql
-#sudo apt-get install python-psycopg2
-#sudo apt-get install libpq-dev
+sudo echo "Bienvenido"
+sudo apt-get install postgresql
+sudo apt-get install python-psycopg2
+sudo apt-get install libpq-dev
 echo "INSTALACION"
 sudo apt-get install virtualenv
 echo "CREACIONN"
@@ -22,7 +24,5 @@ cd project-item-management-system
 git checkout desarrolloPruebaGiuli
 sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
 #psql -c '\x' -c "ALTER USER postgres WITH PASSWORD '12345';"
-
-
 #deactivate
 #rm -rf is2_env/
