@@ -23,3 +23,4 @@ social-auth-core==3.2.0
 sqlparse==0.3.1
 urllib3==1.25.8
 psycopg2==2.8.4
+sphinx==2.4.4
