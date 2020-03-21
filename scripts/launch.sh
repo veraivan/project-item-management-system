@@ -13,5 +13,5 @@ source ./is2_env/bin/activate
 pip list
 pip install -r requirements.txt
 cd project-item-management-system
-sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD '12345';"
+sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
 
