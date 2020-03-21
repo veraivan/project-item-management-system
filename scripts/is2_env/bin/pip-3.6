@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-#!/home/giuli/Desktop/pythonprojects/project-item-management-system/scripts/is2_env/bin/python3.6
-=======
 #!/home/nelson/Escritorio/project-item-management-system/scripts/is2_env/bin/python
->>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
 # -*- coding: utf-8 -*-
 import re
 import sys
-from rsa.cli import encrypt
+from pip._internal.cli.main import main
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
-    sys.exit(encrypt())
+    sys.exit(main())

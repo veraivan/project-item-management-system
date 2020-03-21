@@ -1,12 +1,25 @@
 # This file must be used with "source bin/activate" *from bash*
 # you cannot run it directly
 
+<<<<<<< HEAD
+=======
+
+if [ "${BASH_SOURCE-}" = "$0" ]; then
+    echo "You must source this script: \$ source $0" >&2
+    exit 33
+fi
+
+>>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
 deactivate () {
     unset -f pydoc >/dev/null 2>&1
 
     # reset old environment variables
     # ! [ -z ${VAR+_} ] returns true if VAR is declared at all
+<<<<<<< HEAD
     if ! [ -z "${_OLD_VIRTUAL_PATH+_}" ] ; then
+=======
+    if ! [ -z "${_OLD_VIRTUAL_PATH:+_}" ] ; then
+>>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
         PATH="$_OLD_VIRTUAL_PATH"
         export PATH
         unset _OLD_VIRTUAL_PATH
@@ -40,7 +53,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="/home/giuli/Desktop/pythonprojects/project-item-management-system/scripts/is2_env"
+=======
+VIRTUAL_ENV='/home/nelson/Escritorio/project-item-management-system/scripts/is2_env'
+>>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -54,17 +71,29 @@ if ! [ -z "${PYTHONHOME+_}" ] ; then
 fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
+<<<<<<< HEAD
     _OLD_VIRTUAL_PS1="$PS1"
     if [ "x" != x ] ; then
         PS1="$PS1"
     else
         PS1="(`basename \"$VIRTUAL_ENV\"`) $PS1"
+=======
+    _OLD_VIRTUAL_PS1="${PS1-}"
+    if [ "x" != x ] ; then
+        PS1="${PS1-}"
+    else
+        PS1="(`basename \"$VIRTUAL_ENV\"`) ${PS1-}"
+>>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
     fi
     export PS1
 fi
 
 # Make sure to unalias pydoc if it's already there
+<<<<<<< HEAD
 alias pydoc 2>/dev/null >/dev/null && unalias pydoc
+=======
+alias pydoc 2>/dev/null >/dev/null && unalias pydoc || true
+>>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
 
 pydoc () {
     python -m pydoc "$@"

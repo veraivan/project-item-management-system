@@ -21,8 +21,13 @@ pip list
 pip install -r requirements.txt
 pip list
 cd project-item-management-system
+<<<<<<< HEAD
 git checkout desarrolloPruebaGiuli
 sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
 #psql -c '\x' -c "ALTER USER postgres WITH PASSWORD '12345';"
 #deactivate
 #rm -rf is2_env/
+=======
+sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
+
+>>>>>>> e13e650958cc4f04655f013dc5a92bc33fd584d8
