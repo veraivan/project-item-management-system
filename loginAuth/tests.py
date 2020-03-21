@@ -1,8 +1,7 @@
 
 # Create your tests here.
 from django.test import TestCase
-from django.contrib.auth.models import  User
-from django.test.client import RequestFactory
+
 from django.urls.base import reverse,resolve
 
 from . import views
