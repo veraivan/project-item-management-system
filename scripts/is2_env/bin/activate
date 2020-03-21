@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/cbelotto/Escritorio/PRUEBA/project-item-management-system/scripts/is2_env"
+VIRTUAL_ENV="/home/giuli/Desktop/pythonprojects/project-item-management-system/scripts/is2_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

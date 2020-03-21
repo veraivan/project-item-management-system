@@ -1,4 +1,4 @@
-#!/home/cbelotto/Escritorio/PRUEBA/project-item-management-system/scripts/is2_env/bin/python
+#!/home/giuli/Desktop/pythonprojects/project-item-management-system/scripts/is2_env/bin/python
 
 import sys
 import getopt

@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/cbelotto/Escritorio/PRUEBA/project-item-management-system/scripts/is2_env"
+set -gx VIRTUAL_ENV "/home/giuli/Desktop/pythonprojects/project-item-management-system/scripts/is2_env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

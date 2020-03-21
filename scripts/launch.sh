@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo echo "Hola"
-git clone https://github.com/veraivan/project-item-management-system.git
+#git clone https://github.com/veraivan/project-item-management-system.git
 sudo apt-get install python-django
 sudo apt-get install python3-pip
 sudo apt-get install python3-dev
