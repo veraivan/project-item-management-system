@@ -9,6 +9,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Vitualenv
+/project-item-management-system/scripts/is2_env/
+
 # Distribution / packaging
 .Python
 build/
