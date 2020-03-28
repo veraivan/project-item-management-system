@@ -10,7 +10,7 @@ __pycache__/
 *.so
 
 # Vitualenv
-/project-item-management-system/scripts/is2_env/
+/scripts/is2_env/
 
 # Distribution / packaging
 .Python
