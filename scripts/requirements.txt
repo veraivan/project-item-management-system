@@ -1,5 +1,6 @@
 alabaster==0.7.12
 asgiref==3.2.5
+auth0-python==3.9.1
 Babel==2.8.0
 certifi==2019.11.28
 cffi==1.14.0
@@ -15,7 +16,6 @@ Jinja2==2.11.1
 MarkupSafe==1.1.1
 oauthlib==3.1.0
 packaging==20.3
-pkg-resources==0.0.0
 psycopg2==2.8.4
 pyasn1==0.4.8
 pycparser==2.20

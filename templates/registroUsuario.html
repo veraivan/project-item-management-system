@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Registro {% endblock %}
+
+{% block content %}
+  <div class="container d-flex justify-content-center">
+    <div class="cuadro mt-4">
+      <div class="segmento d-flex justify-content-center align-items-center">
+        <h2 class="text-white">Registrar Usuario</h2>
+      </div>
+      <form class="mt-4" method="POST">
+        {% csrf_token %}
+        <div class="form-group row mb-0">
+          <div class="col-sm-6 offset-sm-1">
+            <label for="nombre">Nombre de Usuario</label>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-sm-9 offset-sm-1">
+            {{ form.nombre}}
+          </div>
+        </div>
+        <div class="form-group row mb-0">
+          <div class="col-sm-6 offset-sm-1">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-sm-9 offset-sm-1">
+            {{ form.email}}
+          </div>
+        </div>
+        <div class="form-group row mb-0">
+          <div class="col-sm-6 offset-sm-1">
+            <label for="email">Contraseña</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9 offset-sm-1">
+            {{ form.password}}
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="mx-auto">
+            <button class="btn btn-primary ancho-btn">Guardar</button>
+          </div>
+        </div> 
+      </form>
+      <div class="row mt-3">
+        <div class="mx-auto">
+          <a href="/">
+            <button class="btn btn-danger ancho-btn">Cancelar</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock%}

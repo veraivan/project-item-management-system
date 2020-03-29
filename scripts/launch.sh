@@ -21,9 +21,9 @@ pip list
 pip install -r requirements.txt
 pip list
 cd project-item-management-system
-git checkout desarrolloPruebaGiuli
-sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
 #deactivate
 #rm -rf is2_env/
 
-
+echo "Se crea la base de datos"
+sudo -u postgres psql -c 'create database db_proyecto;'
+sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
