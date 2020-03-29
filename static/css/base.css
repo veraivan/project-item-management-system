@@ -1,8 +1,8 @@
-body {
+#fondo { 
     background-image: url("https://p4.wallpaperbetter.com/wallpaper/384/818/513/himalayas-clouds-landscape-snow-wallpaper-c8364dc830107c68c0ccf1cef8d2446a.jpg");
     background-attachment: fixed;
     background-size: cover;
-    height: 600px;
+    height: -webkit-fill-available;
 }
 
 .card{
