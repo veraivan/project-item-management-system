@@ -16,6 +16,6 @@ source ./is2_env/bin/activate
 pip list
 pip install -r requirements.txt
 cd project-item-management-system
-sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
 echo "Se crea la base de datos"
 sudo -u postgres psql -c 'create database db_proyecto;'
+sudo -u postgres psql -c '\x' -c "ALTER USER postgres WITH PASSWORD 'postgres';"
