@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'loginAuth',
-    'auth0'
+    'auth0',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'account.ProjectUser'
 
 WSGI_APPLICATION = 'ProjectManager.wsgi.application'
 

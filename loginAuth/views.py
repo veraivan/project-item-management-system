@@ -4,10 +4,7 @@ from django.contrib.auth import logout as log_out
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
-from django.views.generic import View
-from .formulario import UsuarioForm 
-from auth0.v3.authentication import GetToken
-from auth0.v3.management import Auth0
+
 
 
 def index(request):
@@ -47,36 +44,3 @@ def logout(request):
                  (settings.SOCIAL_AUTH_AUTH0_DOMAIN, settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
     return HttpResponseRedirect(logout_url)
 
-class Registro(View):
-    def get(self, request, *args, **kwargs):
-        form = UsuarioForm()
-        return render(request, 'registroUsuario.html', {'form':form})
-    
-    def post(self, request, *args, **kwargs):
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            guardarUsuarioSSO(form.cleaned_data)
-            valor = True
-        return render(request, 'index.html', {'mensaje_valido':valor})
-
-
-def guardarUsuarioSSO(usuario):
-    dominio = 'authentication-django.auth0.com'
-    client_id = '3sWyFJccKrRs3wH52bgQJFX9im4wS0Qp'
-    client_secret = 'my82yHs9ZSmb-frFvlLWAEUhVGZwAuyaxlfOR6Ggi1gvWf1FqVQO0Lzfm-uQfPTE'
-
-    #Nos autenticamos al sso y no responde con un token
-    get_token = GetToken(dominio)
-    token = get_token.client_credentials(client_id, client_secret, 'https://{}/api/v2/'.format(dominio))
-    api_token = token['access_token']
-
-    #Enviar token
-    auth0 = Auth0(dominio, api_token)
-
-    #Enviamos el nuevo usuario al SS0
-    auth0.users.create({
-        'connection': 'Username-Password-Authentication',
-        'email': usuario['email'],
-        'password': usuario['password'],
-        'nickname' : usuario['nombre']
-    })
