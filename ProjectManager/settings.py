@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'loginAuth',
     'auth0',
     'account',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

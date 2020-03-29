@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %} Registro {% endblock %}
 
 {% block content %}
-    <div class="container d-flex justify-content-center">
+<div id="fondo" class="d-flex justify-content-center align-items-center">
+    <div id class="container d-flex justify-content-center">
         <div class="cuadro mt-4">
             <div class="segmento d-flex justify-content-center align-items-center">
                 <h2 class="text-white">Registrar Usuario</h2>
             </div>
-            <form class="mt-4" method="POST">{% csrf_token %}
-                <div class="select2-container--default">
-                    <fieldset class="form-group">
-                        <legend class="border-bottom mb-4">Registro de Usuario</legend>
-                        {{ form.as_p }}
+            <form class="mt-4 justify-content-center" method="POST">{% csrf_token %}
+                <div class="form-inline justify-content-center">
+                    <fieldset class="form-group align-items-center form-inline">
+                        {{ form|crispy }}
                     </fieldset>
                 </div>
                 <!--<div class="form-group row mb-0">
@@ -59,4 +60,5 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock%}
