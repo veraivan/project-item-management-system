@@ -7,3 +7,9 @@ class UsuarioForm(forms.ModelForm):
     class Meta:
         model = ProjectUser
         fields = ['email', 'username', 'password']
+
+
+class ModificarDatosForm(forms.ModelForm):
+    class Meta:
+        model=ProjectUser
+        fields = ['email', 'username']

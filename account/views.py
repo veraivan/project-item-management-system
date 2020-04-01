@@ -5,10 +5,11 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
 from django.views.generic import View
-from .forms import UsuarioForm
+from .forms import UsuarioForm,ModificarDatosForm
 from auth0.v3.authentication import GetToken
 from auth0.v3.management import Auth0
 # Create your views here.
+from .models import ProjectUser
 
 
 class Registro(View):
@@ -67,9 +68,11 @@ def dashboard(request):
     La funcion dasboard es lanzada una vez que el usuario se autentica, mediante el decorador
     login_required y le redireciona al menu principal del sistema.
     """
-    user = request.user
-    return render(request, 'account/dashboard.html', {})
+    user = request.user.id
+    userr = ProjectUser.objects.get(id=user)
 
+
+    return render(request, 'account/dashboard.html',{'userr':userr} )
 
 def logout(request):
     """
@@ -83,3 +86,14 @@ def logout(request):
                  (settings.SOCIAL_AUTH_AUTH0_DOMAIN, settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
     return HttpResponseRedirect(logout_url)
 
+def date_update(request, id_usuario):
+    usuario=ProjectUser.objects.get(id=id_usuario)
+    if request.method== 'GET':
+        form=ModificarDatosForm(instance=usuario)
+    else:
+        form=ModificarDatosForm(request.POST,instance=usuario)
+        if form.is_valid():
+            form.save()
+        return redirect('account_loggin')
+
+    return render(request,'account/ModificarDatosUsuarios.html',{'form':form})
