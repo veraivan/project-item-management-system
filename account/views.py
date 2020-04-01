@@ -43,8 +43,9 @@ def guardarUsuarioSSO(usuario):
         'connection': 'Username-Password-Authentication',
         'email': usuario['email'],
         'password': usuario['password'],
-        'nickname': usuario['username']
+        'nickname': usuario['username'],
     })
+
 
 def loggin(request):
     """
