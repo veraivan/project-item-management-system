@@ -1,13 +1,19 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import logout as log_out
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from urllib.parse import urlencode
+
+from django.urls import reverse_lazy
 from django.views.generic import View
-from .forms import UsuarioForm
+from .forms import UsuarioForm, UserRolForm
 from auth0.v3.authentication import GetToken
 from auth0.v3.management import Auth0
+from django.contrib.auth.models import Group
+from .models import ProjectUser
+from .decorators import require_authenticated_permission
+
 # Create your views here.
 
 
@@ -63,6 +69,7 @@ def loggin(request):
 
 
 @login_required
+#@permission_required('account.see_page', raise_exception=True)
 def dashboard(request):
     """
     La funcion dasboard es lanzada una vez que el usuario se autentica, mediante el decorador
@@ -71,7 +78,8 @@ def dashboard(request):
     user = request.user
     return render(request, 'account/dashboard.html', {})
 
-
+@login_required
+#@permission_required('account.see_page', raise_exception=True)
 def logout(request):
     """
     La funcion del logout ya se encarga de redireccionar al menu de inicio de sesion
@@ -83,4 +91,103 @@ def logout(request):
     logout_url = 'https://%s/v2/logout?client_id=%s&%s' % \
                  (settings.SOCIAL_AUTH_AUTH0_DOMAIN, settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
     return HttpResponseRedirect(logout_url)
+
+
+@require_authenticated_permission('account.see_page')
+class UserRolList(View):
+
+    def get(self, request):
+        return render(request, 'roles/list.html', {'roles': Group.objects.all()})
+
+
+@require_authenticated_permission('account.see_page')
+class UserRolCreate(View):
+    template_name = 'roles/create.html'
+    form_class = UserRolForm
+
+    def get(self, request):
+        return render(request, self.template_name, {'form': self.form_class()})
+    
+    def post(self, request):
+        bound_form = self.form_class(request.POST)
+        if bound_form.is_valid():
+            new_object = bound_form.save()
+            return redirect('/roles/')
+            #return redirect(new_object)
+        else:
+            return render(request, self.template_name, {'form': bound_form})
+
+
+@require_authenticated_permission('account.see_page')
+class UserRolDetail(View):
+    template_name = 'roles/detail.html'
+
+    def get(self, request, id):
+        rol = get_object_or_404(Group, id=id)
+        return render(
+            request,
+            self.template_name,
+            {'rol': rol})
+
+
+@require_authenticated_permission('account.see_page')
+class UserRolUpdate(View):
+    template_name = 'roles/edit.html'
+    form_class = UserRolForm
+    model = Group
+
+    def get(self, request, id):
+        obj = get_object_or_404(self.model, id=id)
+        context = {'form': self.form_class(instance=obj),
+                   self.model.__name__.lower(): obj}
+        return render(request, self.template_name, context)
+
+    def post(self, request, id):
+        obj = get_object_or_404(self.model, id=id)
+        bound_form = self.form_class(request.POST, instance=obj)
+        if bound_form.is_valid():
+            new_object = bound_form.save()
+            return redirect('/roles/{}'.format(id))
+        else:
+            context = {'form': bound_form,
+                       self.model.__name__.lower(): obj}
+            return render(request, self.template_name, context)
+
+
+@require_authenticated_permission('account.see_page')
+class UserRolAssign(View):
+    model = Group
+    template_name = 'roles/assign.html'
+
+    def get(self, request, id):
+        obj = get_object_or_404(self.model, id=id)
+        context = {'users': ProjectUser.objects.all(),
+                   self.model.__name__.lower(): obj}
+        return render(request, self.template_name, context)
+
+    def post(self, request, id):
+        users = request.POST.getlist('asignar')
+        role = get_object_or_404(Group, id=id)
+        for user in users:
+            user1 = get_object_or_404(ProjectUser, username=user)
+            user1.groups.add(role)
+        return redirect('/roles/{}'.format(id))
+
+
+@require_authenticated_permission('account.see_page')
+class UserRolDelete(View):
+    model = Group
+    success_url = reverse_lazy('account_role_list')
+    template_name = 'roles/delete.html'
+
+    def get(self, request, id):
+        obj = get_object_or_404(self.model, id=id)
+        context = {self.model.__name__.lower(): obj}
+        return render(request, self.template_name, context)
+
+    def post(self, request, id):
+        obj = get_object_or_404(self.model, id=id)
+        obj.delete()
+        return HttpResponseRedirect(self.success_url)
+
 

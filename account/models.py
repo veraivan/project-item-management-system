@@ -44,6 +44,10 @@ class ProjectUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
+    class Meta:
+        permissions = (
+            ('see_page', "Permite al usuario ver la pagina web"),
+        )
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
@@ -54,9 +58,6 @@ class ProjectUser(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         pass
-
-    def has_perm(self, perm, obj=None):
-        return self.is_admin
 
     def has_module_perms(self, app_label):
         return True

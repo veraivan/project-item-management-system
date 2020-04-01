@@ -1,0 +1,38 @@
+{% extends parent_template|default:"base.html" %}
+
+{% block title %}
+{{ block.super }} - Crear Rol
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ rol.name|title }}</h2>
+        <h2>Permisos</h2>
+        <ul>
+            {% for permiso in rol.permissions.all %}
+                <li>{{ permiso.name }}</li>
+            {% empty %}
+                <h3>Este rol no tiene permisos asignados</h3>
+            {% endfor %}
+        </ul>
+        <h2>Usuarios con el Rol</h2>
+        <ul>
+            {% for user in rol.user_set.all %}
+                <li>{{ user.email }}</li>
+            {% empty %}
+                <h3>No hay usuarios con este rol</h3>
+            {% endfor %}
+        </ul>
+        <ul>
+            <li>
+                <a href="{% url 'account_role_assign' rol.id %}">Asignar Rol</a>
+            </li>
+            <li>
+                <a href="{% url 'account_role_update' rol.id %}">Editar Rol</a>
+            </li>
+            <li>
+                <a href="{% url 'account_role_delete' rol.id %}">Eliminar Rol</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

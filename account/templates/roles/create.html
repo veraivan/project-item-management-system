@@ -1,0 +1,17 @@
+{% extends parent_template|default:"base.html" %}
+
+{% block title %}
+{{ block.super }} - Crear Rol
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="container">
+            <form action="{% url 'account_role_create' %}" method = "post">
+                {% csrf_token %}
+                {% include 'includes/bs4_form.html' with form=form %}
+                <button type="submit" class="btn btn-primary">Crear Rol</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

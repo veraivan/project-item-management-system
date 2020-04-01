@@ -1,0 +1,23 @@
+{% extends parent_template|default:"base.html" %}
+
+{% block title %}
+{{ block.super }} - Editar Rol
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="container">
+            <form action="{% url 'account_role_assign' group.id %}" method = "post">
+                {% csrf_token %}
+                {% for user in users %}
+
+                    <input type="checkbox" id="asignar" name="asignar" value="{{user.username}}">
+                    <label for="asignar">{{ user.username|title }}</label><br>
+                {% empty %}
+                    <h4>No users</h4>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends parent_template|default:"base.html" %}
+
+{% block title %}
+{{ block.super }} - Eliminar Rol
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="container">
+            <form action="{% url 'account_role_delete' group.id %}" method = "post"> {% csrf_token %}
+                <p>
+                    Estas seguro que quieres eliminar el Rol {{ group.name }}?
+                </p>
+                <a href="{% url 'account_role_detail' group.id %}">Cancel</a>
+                <button type="submit">Eliminar Rol</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

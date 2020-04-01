@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Registro {% endblock %}
+
+{% block content %}
+<div>
+    <ul>
+        {% for rol in roles %}
+            <li>
+                <a href="{% url 'account_role_detail' rol.id %}">{{ rol.name|title }}</a>
+            </li>
+        {% empty %}
+            <li><em>No hay roles disponibles.</em></li>
+        {% endfor %}
+    </ul>
+    <ul>
+        <li><a href="{% url 'account_role_create' %}">Crear Rol</a> </li>
+    </ul>
+</div>
+{% endblock %}
