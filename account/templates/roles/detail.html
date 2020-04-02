@@ -1,7 +1,7 @@
-{% extends parent_template|default:"base.html" %}
+{% extends parent_template|default:"base_page.html" %}
 
 {% block title %}
-{{ block.super }} - Crear Rol
+{{ block.super }} - Rol
 {% endblock %}
 
 {% block content %}
@@ -29,6 +29,9 @@
             </li>
             <li>
                 <a href="{% url 'account_role_update' rol.id %}">Editar Rol</a>
+            </li>
+            <li>
+                <a href="{% url 'account_role_remove' rol.id %}">Quitar Rol</a>
             </li>
             <li>
                 <a href="{% url 'account_role_delete' rol.id %}">Eliminar Rol</a>

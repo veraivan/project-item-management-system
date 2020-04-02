@@ -1,4 +1,4 @@
-{% extends parent_template|default:"base.html" %}
+{% extends parent_template|default:"base_page.html" %}
 
 {% block title %}
 {{ block.super }} - Eliminar Rol
@@ -11,8 +11,10 @@
                 <p>
                     Estas seguro que quieres eliminar el Rol {{ group.name }}?
                 </p>
-                <a href="{% url 'account_role_detail' group.id %}">Cancel</a>
-                <button type="submit">Eliminar Rol</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">Eliminar Rol</button>
+                    <a class="btn btn-outline-primary" href="{% url 'account_role_list' %}">Cancel</a>
+                </div>
             </form>
         </div>
     </div>

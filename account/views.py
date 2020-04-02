@@ -14,6 +14,7 @@ from django.contrib.auth.models import Group
 from .models import ProjectUser
 from .decorators import require_authenticated_permission
 
+
 # Create your views here.
 
 
@@ -69,7 +70,6 @@ def loggin(request):
 
 
 @login_required
-#@permission_required('account.see_page', raise_exception=True)
 def dashboard(request):
     """
     La funcion dasboard es lanzada una vez que el usuario se autentica, mediante el decorador
@@ -78,8 +78,8 @@ def dashboard(request):
     user = request.user
     return render(request, 'account/dashboard.html', {})
 
+
 @login_required
-#@permission_required('account.see_page', raise_exception=True)
 def logout(request):
     """
     La funcion del logout ya se encarga de redireccionar al menu de inicio de sesion
@@ -94,6 +94,7 @@ def logout(request):
 
 
 @require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
 class UserRolList(View):
 
     def get(self, request):
@@ -101,24 +102,26 @@ class UserRolList(View):
 
 
 @require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
 class UserRolCreate(View):
     template_name = 'roles/create.html'
     form_class = UserRolForm
 
     def get(self, request):
         return render(request, self.template_name, {'form': self.form_class()})
-    
+
     def post(self, request):
         bound_form = self.form_class(request.POST)
         if bound_form.is_valid():
             new_object = bound_form.save()
             return redirect('/roles/')
-            #return redirect(new_object)
+            # return redirect(new_object)
         else:
             return render(request, self.template_name, {'form': bound_form})
 
 
 @require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
 class UserRolDetail(View):
     template_name = 'roles/detail.html'
 
@@ -131,6 +134,7 @@ class UserRolDetail(View):
 
 
 @require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
 class UserRolUpdate(View):
     template_name = 'roles/edit.html'
     form_class = UserRolForm
@@ -155,13 +159,14 @@ class UserRolUpdate(View):
 
 
 @require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
 class UserRolAssign(View):
     model = Group
     template_name = 'roles/assign.html'
 
     def get(self, request, id):
         obj = get_object_or_404(self.model, id=id)
-        context = {'users': ProjectUser.objects.all(),
+        context = {'users': ProjectUser.objects.all().exclude(groups=obj.id),
                    self.model.__name__.lower(): obj}
         return render(request, self.template_name, context)
 
@@ -175,6 +180,28 @@ class UserRolAssign(View):
 
 
 @require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
+class UserRolRemove(View):
+    model = Group
+    template_name = 'roles/remove.html'
+
+    def get(self, request, id):
+        obj = get_object_or_404(self.model, id=id)
+        context = {'users': ProjectUser.objects.all().filter(groups=obj.id),
+                   self.model.__name__.lower(): obj}
+        return render(request, self.template_name, context)
+
+    def post(self, request, id):
+        users = request.POST.getlist('remover')
+        role = get_object_or_404(Group, id=id)
+        for user in users:
+            user1 = get_object_or_404(ProjectUser, username=user)
+            user1.groups.remove(role)
+        return redirect('/roles/{}'.format(id))
+
+
+@require_authenticated_permission('account.see_page')
+@require_authenticated_permission('account.manejar_roles')
 class UserRolDelete(View):
     model = Group
     success_url = reverse_lazy('account_role_list')
@@ -189,5 +216,4 @@ class UserRolDelete(View):
         obj = get_object_or_404(self.model, id=id)
         obj.delete()
         return HttpResponseRedirect(self.success_url)
-
 

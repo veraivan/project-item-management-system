@@ -1,7 +1,7 @@
-{% extends parent_template|default:"base.html" %}
+{% extends parent_template|default:"base_page.html" %}
 
 {% block title %}
-{{ block.super }} - Editar Rol
+{{ block.super }} - Asignar Rol
 {% endblock %}
 
 {% block content %}
@@ -16,7 +16,10 @@
                 {% empty %}
                     <h4>No users</h4>
                 {% endfor %}
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <a class="btn btn-outline-danger" href="{% url 'account_role_list' %}">Cancel</a>
+                </div>
             </form>
         </div>
     </div>

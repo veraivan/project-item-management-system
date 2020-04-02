@@ -13,5 +13,6 @@ urlpatterns = [
     path('roles/<int:id>/editar/', UserRolUpdate.as_view(), name='account_role_update'),
     path('roles/<int:id>/eliminar/', UserRolDelete.as_view(), name='account_role_delete'),
     path('roles/<int:id>/asignar/', UserRolAssign.as_view(), name='account_role_assign'),
+    path('roles/<int:id>/quitar/', UserRolRemove.as_view(), name='account_role_remove'),
 ]
 

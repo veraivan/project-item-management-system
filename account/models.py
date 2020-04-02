@@ -47,6 +47,7 @@ class ProjectUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         permissions = (
             ('see_page', "Permite al usuario ver la pagina web"),
+            ('manejar_roles', "Permite al usuario manejar el sistema de roles"),
         )
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
