@@ -86,14 +86,32 @@ def logout(request):
                  (settings.SOCIAL_AUTH_AUTH0_DOMAIN, settings.SOCIAL_AUTH_AUTH0_KEY, return_to)
     return HttpResponseRedirect(logout_url)
 
-def date_update(request, id_usuario):
-    usuario=ProjectUser.objects.get(id=id_usuario)
-    if request.method== 'GET':
-        form=ModificarDatosForm(instance=usuario)
-    else:
+
+
+class EditarDatosUsuario(View):
+    def get(self,request,id_usuario):
+        usuario = ProjectUser.objects.get(id=id_usuario)
+        form = ModificarDatosForm(instance=usuario)
+        return render(request, 'account/ModificarDatosUsuarios.html', {'form': form})
+    def post(self,request,id_usuario):
+        usuario = ProjectUser.objects.get(id=id_usuario)
         form=ModificarDatosForm(request.POST,instance=usuario)
         if form.is_valid():
             form.save()
-        return redirect('account_loggin')
+        return redirect('account_dashboard')
 
-    return render(request,'account/ModificarDatosUsuarios.html',{'form':form})
+
+"""       
+class Registro(View):
+    def get(self, request):
+        form = UsuarioForm()
+        return render(request, 'account/registroUsuario.html', {'form': form})
+
+    def post(self, request):
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            guardarUsuarioSSO(form.cleaned_data)
+            form.save()
+            valor = True
+        return render(request, 'account/index.html', {'mensaje_valido': valor})
+"""
