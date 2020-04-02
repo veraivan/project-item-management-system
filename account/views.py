@@ -78,8 +78,6 @@ def dashboard(request):
     """
     user = request.user.id
     userr = ProjectUser.objects.get(id=user)
-
-
     return render(request, 'account/dashboard.html',{'userr':userr} )
 
 @login_required
