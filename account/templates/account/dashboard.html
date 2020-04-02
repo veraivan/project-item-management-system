@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -47,3 +48,19 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
+=======
+{% extends parent_template|default:'base_page.html' %}
+{% block head %}
+{{ block.head }} - Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Bienvenido {{ user.username }}</h2>
+        <h4> Correo: {{ user.email }}</h4>
+        {% if perms.account.manejar_roles %}
+                <a class="btn btn-primary btn-lg" href="{% url 'account_role_list' %}" role="button">ROLES</a>
+        {% endif %}
+    </div>
+{% endblock %}
+>>>>>>> eeb5c060b09336a977e722b73a57d8b430c82ac1

@@ -1,0 +1,26 @@
+{% extends parent_template|default:"base_page.html" %}
+{% load roles_extra %}
+
+{% block title %}
+{{ block.super }} - Remover Rol
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="container">
+            <form action="{% url 'account_role_remove' group.id %}" method = "post">
+                {% csrf_token %}
+                {% for user in users %}
+                        <input type="checkbox" id="remover" name="remover" value="{{user.username}}">
+                        <label for="asignar">{{ user.username|title }}</label><br>
+                {% empty %}
+                    <h4>No users</h4>
+                {% endfor %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-danger">Quitar Rol</button>
+                    <a class="btn btn-secondary" href="{% url 'account_role_detail' group.id %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

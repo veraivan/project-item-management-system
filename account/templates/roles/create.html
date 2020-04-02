@@ -1,0 +1,26 @@
+{% extends parent_template|default:"base_page.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+{{ block.super }} - Crear Rol
+{% endblock %}
+
+
+
+{% block content %}
+    <div>
+        <div class="container">
+            <form action="{% url 'account_role_create' %}" method = "post">
+                {% csrf_token %}
+                {{ form.name.label_tag }}
+                {% render_field form.name class='form-control' placeholder="Nombre del Rol" %}
+                {{ form.permissions.label_tag }}
+                {% render_field form.permissions class='form-control' size="20" %}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Crear Rol</button>
+                    <a class="btn btn-outline-danger" href="{% url 'account_role_list' %}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
