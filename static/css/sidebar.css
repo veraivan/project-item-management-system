@@ -1,24 +1,19 @@
 body {
-    overflow-x: hidden;
+
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  width: 18rem;
 }
   
-  #sidebar-wrapper {
-    min-height: 100vh;
-  }
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
   
-  #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-  }
-  
-  #sidebar-wrapper .list-group {
-    width: 15rem;
-  }
-  
-  #contenido {
-    min-width: 83%;
-  }
-  
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
-  }
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+

@@ -14,6 +14,13 @@ class ModificarDatosForm(forms.ModelForm):
         model=ProjectUser
         fields = ['email', 'username']
 
+
+class ModificarDatosForm(forms.ModelForm):
+    class Meta:
+        model=ProjectUser
+        fields = ['email', 'username']
+
+
 class UserRolForm(forms.ModelForm):
     class Meta:
         model = Group

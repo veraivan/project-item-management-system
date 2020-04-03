@@ -1,6 +1,8 @@
 from django.urls import include, path
 from django.conf.urls import url
-from .views import Registro, dashboard, logout, loggin,EditarDatosUsuario
+from .views import Registro, dashboard, logout, loggin,EditarDatosUsuario,VerDatos
+
+
 from .views import *
 
 
@@ -9,6 +11,7 @@ urlpatterns = [
     path('dashboard/', dashboard, name='account_dashboard'),
     path('logout/', logout, name='account_logout'),
     url(r'^editar/(?P<id_usuario>\d+)/$',EditarDatosUsuario.as_view(), name='editar_dato'),
+    path('ver/<int:pk>/', VerDatos.as_view(), name='ver_dato'),
     path('registro/', Registro.as_view(), name='account_registro'),
     path('roles/', UserRolList.as_view(), name='account_role_list'),
     path('roles/crear/', UserRolCreate.as_view(), name='account_role_create'),

@@ -17,6 +17,10 @@ from .decorators import require_authenticated_permission
 
 # Create your views here.
 from .models import ProjectUser
+from django.views.generic.detail import DetailView
+
+from .models import ProjectUser
+
 
 
 class Registro(View):
@@ -27,13 +31,13 @@ class Registro(View):
     def post(self, request):
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            guardarUsuarioSSO(form.cleaned_data)
             form.save()
-            valor = True
-        return render(request, 'account/index.html', {'mensaje_valido': valor})
+            id_usuario = ProjectUser.objects.get(username=form.cleaned_data['username']).id
+            conexion = conectarSSO()
+            guardarUsuarioSSO(conexion, form.cleaned_data, id_usuario)
+        return render(request, 'account/index.html')
 
-
-def guardarUsuarioSSO(usuario):
+def conectarSSO():
     dominio = 'authentication-django.auth0.com'
     client_id = '3sWyFJccKrRs3wH52bgQJFX9im4wS0Qp'
     client_secret = 'my82yHs9ZSmb-frFvlLWAEUhVGZwAuyaxlfOR6Ggi1gvWf1FqVQO0Lzfm-uQfPTE'
@@ -45,14 +49,24 @@ def guardarUsuarioSSO(usuario):
 
     # Enviar token
     auth0 = Auth0(dominio, api_token)
+    return auth0
 
+def guardarUsuarioSSO(conexion, usuario, idUsuario):
+    
     # Enviamos el nuevo usuario al SS0
-    auth0.users.create({
+    conexion.users.create({
         'connection': 'Username-Password-Authentication',
         'email': usuario['email'],
         'password': usuario['password'],
         'nickname': usuario['username'],
+        'user_id': str(idUsuario),
     })
+
+def actualizarUsuarioSSO(conexion, id, usuario):
+    #Se actualiza el usuario en el SS0
+    idusuario = "auth0|"+str(id)
+    conexion.users.update(idusuario, {'email': usuario['email'], 'nickname': usuario['username']})
+
 
 
 def loggin(request):
@@ -94,6 +108,7 @@ def logout(request):
     return HttpResponseRedirect(logout_url)
 
 
+
 class EditarDatosUsuario(View):
     def get(self,request,id_usuario):
         usuario = ProjectUser.objects.get(id=id_usuario)
@@ -101,26 +116,20 @@ class EditarDatosUsuario(View):
         return render(request, 'account/ModificarDatosUsuarios.html', {'form': form})
     def post(self,request,id_usuario):
         usuario = ProjectUser.objects.get(id=id_usuario)
-        form=ModificarDatosForm(request.POST,instance=usuario)
+        form=ModificarDatosForm(request.POST, instance=usuario)
         if form.is_valid():
             form.save()
+            id_usuario = ProjectUser.objects.get(username=form.cleaned_data['username']).id
+            conexion = conectarSSO()
+            actualizarUsuarioSSO(conexion, id_usuario, form.cleaned_data)
         return redirect('account_dashboard')
 
 
-"""       
-class Registro(View):
-    def get(self, request):
-        form = UsuarioForm()
-        return render(request, 'account/registroUsuario.html', {'form': form})
+class VerDatos(DetailView):
+    model=ProjectUser
+    template_name='account/verDatos.html'
 
-    def post(self, request):
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            guardarUsuarioSSO(form.cleaned_data)
-            form.save()
-            valor = True
-        return render(request, 'account/index.html', {'mensaje_valido': valor})
-"""
+
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolList(View):
@@ -244,5 +253,4 @@ class UserRolDelete(View):
         obj = get_object_or_404(self.model, id=id)
         obj.delete()
         return HttpResponseRedirect(self.success_url)
-
 
