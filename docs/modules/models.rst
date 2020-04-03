@@ -1,10 +1,14 @@
 Models
 =======
 
-.. automodule:: loginAuth.models
+.. automodule:: proyecto.models
    :members:
    :undoc-members:
 
-.. automodule:: ProjectManager.models
+.. automodule:: account.models
+   :members:
+   :undoc-members:
+
+.. automodule:: loginAuth.models
    :members:
    :undoc-members:
