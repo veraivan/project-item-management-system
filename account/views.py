@@ -12,6 +12,9 @@ from auth0.v3.management import Auth0
 from .models import ProjectUser
 from django.views.generic.detail import DetailView
 
+from .models import ProjectUser
+
+
 
 class Registro(View):
     def get(self, request):
@@ -21,13 +24,14 @@ class Registro(View):
     def post(self, request):
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            guardarUsuarioSSO(form.cleaned_data)
             form.save()
+            id_usuario = ProjectUser.objects.get(form.username).id
+            conexion = conectarSSO()
+            guardarUsuarioSSO(conexion, form.cleaned_data, id_usuario)
             valor = True
         return render(request, 'account/index.html', {'mensaje_valido': valor})
 
-
-def guardarUsuarioSSO(usuario):
+def conectarSSO():
     dominio = 'authentication-django.auth0.com'
     client_id = '3sWyFJccKrRs3wH52bgQJFX9im4wS0Qp'
     client_secret = 'my82yHs9ZSmb-frFvlLWAEUhVGZwAuyaxlfOR6Ggi1gvWf1FqVQO0Lzfm-uQfPTE'
@@ -39,13 +43,26 @@ def guardarUsuarioSSO(usuario):
 
     # Enviar token
     auth0 = Auth0(dominio, api_token)
+    return auth0
 
+def guardarUsuarioSSO(conexion, usuario, idUsuario):
+    
     # Enviamos el nuevo usuario al SS0
-    auth0.users.create({
+    conexion.users.create({
         'connection': 'Username-Password-Authentication',
         'email': usuario['email'],
         'password': usuario['password'],
-        'nickname': usuario['username']
+        'nickname': usuario['username'],
+        'user_id': idUsuario
+    })
+
+def actualizarUsuarioSSO(conexion, id, usuario):
+    #Se actualiza el usuario en el SS0
+    conexion.users.update(id, {
+        'connection': 'Username-Password-Authentication',
+        'email': usuario['email'],
+        'password': usuario['password'],
+        'nickname': usuario['username'],
     })
 
 def loggin(request):
@@ -95,12 +112,15 @@ class EditarDatosUsuario(View):
         form = ModificarDatosForm(instance=usuario)
         return render(request, 'account/ModificarDatosUsuarios.html', {'form': form})
     def post(self,request,id_usuario):
+
         usuario = ProjectUser.objects.get(id=id_usuario)
         form=ModificarDatosForm(request.POST,instance=usuario)
+
         if form.is_valid():
             form.save()
+            conexion = conectarSSO()
+            actualizarUsuarioSSO(conexion, form.cleaned_data, id_usuario)
         return redirect('account_dashboard')
-
 
 
 
