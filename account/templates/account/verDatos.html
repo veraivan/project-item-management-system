@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Mi Perfil {% endblock %}
+
+{% block content %}
+<div id="fondo" class="d-flex justify-content-center align-items-center">
+    <div id class="container d-flex justify-content-center">
+        <div class="cuadro mt-4">
+            <div class="segmento d-flex justify-content-center align-items-center">
+                <h2 class="text-white">Mi Perfil</h2>
+            </div>
+                    <ul>
+                        {% if  object %}
+                            <h4>Correo: {{ object.email}} </h4>
+                            <h4>Usuario: {{ object.username}} </h4>
+                        {% endif %}
+                    </ul>
+                     <div class="row mt-3">
+                          <div class="mx-auto">
+                             <a class="dropdown-item" href="{% url 'editar_dato' object.id %}">
+                                 <button class="btn btn-primary ancho-btn">Editar</button>
+                             </a>
+                        </div>
+                     </div>
+                    <div class="row mt-3">
+                          <div class="mx-auto">
+                             <a class="dropdown-item" href="{% url 'account_dashboard' %}">
+                                 <button class="btn btn-danger ancho-btn">Volver</button>
+                             </a>
+                        </div>
+                     </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

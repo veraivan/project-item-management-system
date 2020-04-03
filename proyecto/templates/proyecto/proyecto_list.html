@@ -1,0 +1,42 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+<table class="table table-hover table dark container">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Estado</th>
+			<th scope="col">Fecha de creacion</th>
+			<th scope="col">Gerente</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% if object_list %}
+		{% for proyecto in object_list %}
+		<tr>
+			<th scope="row">{{ proyecto.id }}</th>
+			<td>{{ proyecto.nombre }}</td>
+			<td>{{ proyecto.estado }}</td>
+			<td>{{ proyecto.fecha_creacion }}</td>
+			<td>{{ proyecto.gerente }}</td>
+			<td>
+			{% if proyecto.estado != 'Cancelado' %}
+				{% if proyecto.estado != 'Finalizado' %}
+					<a class="btn btn-primary" href="{% url 'proyecto_editar' proyecto.id %}">Modificar</a>
+				{% endif %}
+			{% endif%}
+			
+			
+			</td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		<h1>No hay registros de proyectos</h1>
+		{% endif%}
+		<a class="btn btn-primary" href="{% url 'proyecto_crear' %}">Crear</a>
+	</tbody>
+</table>
+
+{% endblock%}

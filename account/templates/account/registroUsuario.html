@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 {% block title %} Registro {% endblock %}
 
 {% block content %}
@@ -10,54 +10,19 @@
                 <h2 class="text-white">Registrar Usuario</h2>
             </div>
             <form class="mt-4 justify-content-center" method="POST">{% csrf_token %}
-                <div class="form-inline justify-content-center">
-                    <fieldset class="form-group align-items-center form-inline">
-                        {{ form|crispy }}
-                    </fieldset>
+                <div class="form-group container">
+                    {{ form.email.label_tag }}
+                    {% render_field form.email class='form-control' placeholder="name@mail.com" %}
+                    {{ form.username.label_tag }}
+                    {% render_field form.username class='form-control' placeholder="username" %}
+                    {{ form.password.label_tag }}
+                    {% render_field form.password class='form-control' type='password' %}
                 </div>
-                <!--<div class="form-group row mb-0">
-                <div class="col-sm-6 offset-sm-1">
-                <label for="nombre">Nombre de Usuario</label>
-                </div>
-                </div>
-                <div class="row mb-4">
-                <div class="col-sm-9 offset-sm-1">
-                {# {{ form.nombre}} #}
-                </div>
-                </div>
-                <div class="form-group row mb-0">
-                <div class="col-sm-6 offset-sm-1">
-                <label for="email">Email</label>
-                </div>
-                </div>
-                <div class="row mb-4">
-                <div class="col-sm-9 offset-sm-1">
-                {# {{ form.email}} #}
-                </div>
-                </div>
-                <div class="form-group row mb-0">
-                <div class="col-sm-6 offset-sm-1">
-                <label for="email">Contraseña</label>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-sm-9 offset-sm-1">
-                {# {{ form.password}} #}
-                </div>
-                </div>-->
-                <div class="row mt-5">
-                <div class="mx-auto">
-                <button type="submit" class="btn btn-primary ancho-btn">Guardar</button>
-                </div>
+                <div class="form-group container">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <a class="btn btn-outline-danger" href="{% url 'account_loggin' %}">Cancel</a>
                 </div>
             </form>
-            <div class="row mt-3">
-            <div class="mx-auto">
-            <a href="/">
-            <button class="btn btn-danger ancho-btn">Cancelar</button>
-            </a>
-            </div>
-            </div>
         </div>
     </div>
 </div>

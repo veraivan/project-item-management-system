@@ -1,0 +1,30 @@
+{% extends 'base_page.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron container">
+  <h1 class="display-4">Roles!</h1>
+  <p class="lead">Aqui se listan los roles disponibles para ser asignados.</p>
+  <hr class="my-4">
+  <p>
+      <div class="container">
+        <ul>
+            {% for rol in roles %}
+                <li>
+                    <a href="{% url 'account_role_detail' rol.id %}">{{ rol.name|title }}</a>
+                    <ul>
+                        <li><a href="{% url 'account_role_assign' rol.id %}">Asignar Rol a Usuario</a></li>
+                        <li><a href="{% url 'account_role_remove' rol.id %}">Quitar Rol a Usuario</a></li>
+                    </ul>
+                </li>
+            {% empty %}
+                <li><em>No hay roles disponibles.</em></li>
+            {% endfor %}
+        </ul>
+    </div>
+  </p>
+  <a class="btn btn-primary btn-lg" href="{% url 'account_role_create' %}" role="button">Crear Rol</a>
+</div>
+{% endblock %}

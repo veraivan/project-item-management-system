@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'auth0',
     'account',
     'crispy_forms',
+    'widget_tweaks',
+    'proyecto',
     'historial',
 ]
 

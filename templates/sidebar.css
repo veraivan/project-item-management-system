@@ -1,4 +1,5 @@
 body {
+
   overflow-x: hidden;
 }
 
@@ -15,3 +16,4 @@ body {
 #sidebar-wrapper .list-group {
   width: 15rem;
 }
+

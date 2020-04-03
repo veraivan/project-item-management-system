@@ -1,0 +1,1 @@
+web: gunicorn --env DJANGO_SETTINGS_MODULE=ProjectManager.settings_pro ProjectManager.wsgi --log-file -
