@@ -1,0 +1,36 @@
+{% extends 'account/dashboard.html' %}
+
+{% load humanize %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Historial</h2>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Pagina</th>
+                    <th scope="col">Visto en</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                {% for history in history_list %}
+                    <tr>
+                        <td>{{ history.content_object }}</td>
+                        <td>{{ history.viewed_on|naturaltime }}</td>
+                        <td><a href="{% url 'history_delete' history.pk  %}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                    
+                
+                </tbody>
+            </table>
+            </div>
+        </div>  
+</div>  
+
+{% endblock content %}

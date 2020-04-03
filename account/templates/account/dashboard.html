@@ -34,7 +34,7 @@
                </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Modificar usuario</a>
-                  <a class="dropdown-item" href="#">Registro de actividad</a>
+                  <a class="dropdown-item" href="{% url 'history' %}">Registro de actividad</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
@@ -44,8 +44,9 @@
         </nav>
 
         <div class="container-fluid">
-          <h1 class="mt-4">Para colocar los contenidos</h1>
-          <p></p>
+         {% block content %}
+         
+         {% endblock  %}
         </div>
       </div>
     </div>
