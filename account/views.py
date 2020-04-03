@@ -25,11 +25,10 @@ class Registro(View):
         form = UsuarioForm(request.POST)
         if form.is_valid():
             form.save()
-            id_usuario = ProjectUser.objects.get(form.username).id
+            id_usuario = ProjectUser.objects.get(username=form.cleaned_data['username']).id
             conexion = conectarSSO()
             guardarUsuarioSSO(conexion, form.cleaned_data, id_usuario)
-            valor = True
-        return render(request, 'account/index.html', {'mensaje_valido': valor})
+        return render(request, 'account/index.html')
 
 def conectarSSO():
     dominio = 'authentication-django.auth0.com'
@@ -53,7 +52,7 @@ def guardarUsuarioSSO(conexion, usuario, idUsuario):
         'email': usuario['email'],
         'password': usuario['password'],
         'nickname': usuario['username'],
-        'user_id': idUsuario
+        'user_id': str(idUsuario),
     })
 
 def actualizarUsuarioSSO(conexion, id, usuario):
