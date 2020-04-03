@@ -1,9 +1,4 @@
-"""
-ESTE ARCHIVO DE CONFIGURACION TIENE LOS PARAMENTROS NECESARIOS PARA HACER DEPLOYMENT DEL PROYECTO
-"""
 import os
-import dj_database_url
-from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,6 +25,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'loginAuth',
+    'auth0',
+    'account',
+    'crispy_forms',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -42,8 +41,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTHENTICATION_BACKENDS = {
     'social_core.backends.auth0.Auth0OAuth2',
@@ -69,16 +66,21 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.ProjectUser'
+
 WSGI_APPLICATION = 'ProjectManager.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL')
-        )
-    }
+import dj_database_url
+from decouple import config
+
+DATABASE = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -114,12 +116,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 
+
 # Nombre de la carpeta donde guadaremos los archivos css y javascript
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static')
+)
+
 
 # Configuraciones para el SSO
 SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
@@ -135,3 +139,6 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
 
 LOGIN_URL = '/login/auth0'
 LOGIN_REDIRECT_URL = '/dashboard'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
