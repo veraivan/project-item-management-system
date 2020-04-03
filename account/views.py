@@ -57,12 +57,8 @@ def guardarUsuarioSSO(conexion, usuario, idUsuario):
 
 def actualizarUsuarioSSO(conexion, id, usuario):
     #Se actualiza el usuario en el SS0
-    conexion.users.update(id, {
-        'connection': 'Username-Password-Authentication',
-        'email': usuario['email'],
-        'password': usuario['password'],
-        'nickname': usuario['username'],
-    })
+    idusuario = "auth0|"+str(id)
+    conexion.users.update(idusuario, {'email': usuario['email'], 'nickname': usuario['username']})
 
 def loggin(request):
     """
@@ -111,16 +107,14 @@ class EditarDatosUsuario(View):
         form = ModificarDatosForm(instance=usuario)
         return render(request, 'account/ModificarDatosUsuarios.html', {'form': form})
     def post(self,request,id_usuario):
-
         usuario = ProjectUser.objects.get(id=id_usuario)
-        form=ModificarDatosForm(request.POST,instance=usuario)
-
+        form=ModificarDatosForm(request.POST, instance=usuario)
         if form.is_valid():
             form.save()
+            id_usuario = ProjectUser.objects.get(username=form.cleaned_data['username']).id
             conexion = conectarSSO()
-            actualizarUsuarioSSO(conexion, form.cleaned_data, str(id_usuario))
+            actualizarUsuarioSSO(conexion, id_usuario, form.cleaned_data)
         return redirect('account_dashboard')
-
 
 
 class VerDatos(DetailView):
