@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %} Sistema- Auntenticacion {% endblock %}
+
+{% block content %}
+  <div id="fondo" class="d-flex justify-content-center align-items-center">
+    <div class="card">
+      <h3 class="mx-auto mt-4">Sigle Sign On</h3>
+      <hr>
+      <a class="btn btn-primary ancho-boton mx-auto mt-3" href="/login/auth0">Login</a>
+      <a class="btn btn-primary ancho-boton mx-auto mt-3" href="{% url 'registroUsuario' %}">Registrarse</a>
+    </div>
+  </div>
+{% endblock %}

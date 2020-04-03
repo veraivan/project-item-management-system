@@ -37,6 +37,7 @@ class testmodeloautenticacion(TestCase):
 
         response=self.client.post(self.register_dashboard,self.dato)#envia al cliente de prueba la vista con la direccion
         self.assertEqual(response.status_code, 302)
+        print("EL test de retorno de dashboard corrio correctamente")
        # m=resolve(self.register_dashboard)
         #print (self.dato)
         #self.assertequal(self.dato['username'],'ruizn291')

@@ -23,8 +23,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'social_django',
     'loginAuth',
+    'auth0',
+    'account',
+    'crispy_forms',
+    'historial',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +66,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.ProjectUser'
+
 WSGI_APPLICATION = 'ProjectManager.wsgi.application'
 
 # Database
@@ -69,8 +76,8 @@ WSGI_APPLICATION = 'ProjectManager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_proyecto',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
