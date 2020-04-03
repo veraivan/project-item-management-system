@@ -35,6 +35,15 @@ class MyUserManager(BaseUserManager):
 
 
 class ProjectUser(AbstractBaseUser, PermissionsMixin):
+    """
+    Modelo correspondiente a al Usuario
+
+	ATRIBUTOS:
+		- email: aqui se agrega el email del usuairio, este sera su identificador.
+		- username: aqui se agregara el username del usuario que se utilizara con propositos de referencia
+		- date_joined: genera automaticamente la fecha en que es usuario se unio.
+		- permisos: Permisos que se generan para el modelo de cuenta de usuario
+    """
     email = models.EmailField(verbose_name="email", max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
