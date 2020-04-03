@@ -118,7 +118,7 @@ class EditarDatosUsuario(View):
         if form.is_valid():
             form.save()
             conexion = conectarSSO()
-            actualizarUsuarioSSO(conexion, form.cleaned_data, id_usuario)
+            actualizarUsuarioSSO(conexion, form.cleaned_data, str(id_usuario))
         return redirect('account_dashboard')
 
 
