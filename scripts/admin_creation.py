@@ -11,5 +11,3 @@ admin_group = Group.objects.create(name='Administrador')
 for permission in Permission.objects.all():
     admin_group.permissions.add(permission)
 admin.groups.add(admin_group)
-
-

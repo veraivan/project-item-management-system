@@ -133,6 +133,9 @@ class VerDatos(DetailView):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolList(View):
+    """
+        La funcion de UserRolList se encarga de listar todos los roles disponibles para su asignacion
+    """
 
     def get(self, request):
         return render(request, 'roles/list.html', {'roles': Group.objects.all()})
@@ -141,6 +144,10 @@ class UserRolList(View):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolCreate(View):
+    """
+        La funcion de UserRolCreate se encarga de crear un rol de usuario,
+        asignandole un nombre y los permisos disponibles
+    """
     template_name = 'roles/create.html'
     form_class = UserRolForm
 
@@ -160,6 +167,10 @@ class UserRolCreate(View):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolDetail(View):
+    """
+        La funcion de UserRolDetail se encarga de listar los permisos y usuarios
+         asignados a un rol de usuario.
+    """
     template_name = 'roles/detail.html'
 
     def get(self, request, id):
@@ -173,6 +184,10 @@ class UserRolDetail(View):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolUpdate(View):
+    """
+        La funcion de UserRolUpdate se encarga de editar un rol de usuario
+        que fue previamente creado
+    """
     template_name = 'roles/edit.html'
     form_class = UserRolForm
     model = Group
@@ -198,6 +213,10 @@ class UserRolUpdate(View):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolAssign(View):
+    """
+        La funcion de UserRolAssign se encarga de asignar un rol a un usuario
+        que no lo posee
+    """
     model = Group
     template_name = 'roles/assign.html'
 
@@ -219,6 +238,10 @@ class UserRolAssign(View):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolRemove(View):
+    """
+        La funcion de UserRolRemove se encarga de quitar un rol un de usuario al
+        que previamente se le asigno este rol
+    """
     model = Group
     template_name = 'roles/remove.html'
 
@@ -240,6 +263,10 @@ class UserRolRemove(View):
 @require_authenticated_permission('account.see_page')
 @require_authenticated_permission('account.manejar_roles')
 class UserRolDelete(View):
+    """
+        La funcion de UserRolDelete se encarga de eliminar un rol de usuario perviamente
+        creado
+    """
     model = Group
     success_url = reverse_lazy('account_role_list')
     template_name = 'roles/delete.html'

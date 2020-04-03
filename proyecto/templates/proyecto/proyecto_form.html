@@ -1,0 +1,12 @@
+{% extends 'base_page.html' %}
+
+{% block content %}
+<div class="form-group container">
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Guardar</button>	
+
+	</form>
+</div>
+{% endblock %}
