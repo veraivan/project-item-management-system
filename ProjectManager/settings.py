@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'social_django',
     'loginAuth',
     'auth0',
@@ -30,6 +31,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'proyecto',
+    'historial',
 ]
 
 MIDDLEWARE = [

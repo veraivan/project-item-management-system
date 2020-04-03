@@ -42,7 +42,8 @@ class Proyecto(models.Model):
 		permissions = (
 			('agregar_gerente','Permite agregar un gerente al proyecto'),
 			('cambiar_estado','Permite cambiar el estado del proyecto'),
-			('modificar_nombre','Permite modificar el nombre del al proyecto'),
+			('modificar_proyecto','Permite modificar los atributos del proyecto sin inicializar'),
+			('ver_proyecto', 'Permite al usuario ver los proyectos'),
 		)
 
 	

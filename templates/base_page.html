@@ -30,9 +30,12 @@
                         <!--<li><a href="">Profile</a></li>-->
                         <li><a href="{% url 'editar_dato' user.id %}">Editar Usuario</a></li>
                         <!--<li><a href="">Change Password</a></li>-->
-                        <li><a href="{% url 'proyecto_listar' %}">Proyectos</a></li>
+                        {% if perms.proyecto.modificar_proyecto %}
+                            <li><a href="{% url 'proyecto_listar' %}">Proyectos</a></li>
+                        {% endif %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'history' %}">Registro de actividad</a></li>
                         <li><a href="{% url 'logout' %}">Log out</a></li>
                     </ul>
                 {% else %}
