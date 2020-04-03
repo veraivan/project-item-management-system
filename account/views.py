@@ -10,6 +10,7 @@ from auth0.v3.authentication import GetToken
 from auth0.v3.management import Auth0
 # Create your views here.
 from .models import ProjectUser
+from django.views.generic.detail import DetailView
 
 
 class Registro(View):
@@ -101,17 +102,8 @@ class EditarDatosUsuario(View):
         return redirect('account_dashboard')
 
 
-"""       
-class Registro(View):
-    def get(self, request):
-        form = UsuarioForm()
-        return render(request, 'account/registroUsuario.html', {'form': form})
 
-    def post(self, request):
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            guardarUsuarioSSO(form.cleaned_data)
-            form.save()
-            valor = True
-        return render(request, 'account/index.html', {'mensaje_valido': valor})
-"""
+
+class VerDatos(DetailView):
+    model=ProjectUser
+    template_name='account/verDatos.html'
