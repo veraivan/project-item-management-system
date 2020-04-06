@@ -25,9 +25,9 @@ class Proyecto(models.Model):
 	"""
 
 	nombre = models.CharField(max_length=50)
-	estado = models.CharField(max_length=50)
+	estado = models.CharField(max_length=50, default = 'Pendiente')
 	fecha_creacion = models.DateTimeField(default=timezone.now)	
-	gerente = models.ForeignKey(ProjectUser, null=True, blank = True, on_delete=models.CASCADE)
+	gerente = models.ForeignKey(ProjectUser, null=True, blank = False, on_delete=models.CASCADE)
 
 	def __str__(self):
 		"""
